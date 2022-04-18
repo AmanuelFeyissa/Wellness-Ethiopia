@@ -1,3 +1,3 @@
 # wellness_Ethiopia
 
-A mobile base mental health counseling and community App
+A mobile based mental health counseling and community App
