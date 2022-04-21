@@ -1,10 +1,12 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(wellnessApp());
+  runApp(WellnessApp());
 }
 
-class wellnessApp extends StatelessWidget {
+class WellnessApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +17,7 @@ class wellnessApp extends StatelessWidget {
       /* wellnessApp() Replace with a current page you are working on and
          add your page for test purposes
       */
-      home: wellnessApp(),
+      home: WellnessApp(),
     );
   }
 }
