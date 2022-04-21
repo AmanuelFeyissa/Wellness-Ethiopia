@@ -8,28 +8,62 @@ class GetStartedPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(child: Image.asset('images/getStartedPic.png')),
-          Expanded(child: Image.asset('images/mentalPuzzle.png')),
           Expanded(
+            flex: 2,
+            child: Center(
+              child: Container(
+                // height: 200.0,
+                // width: 200.0,
+                margin: EdgeInsets.only(top: 60.0, bottom: 10.0),
+                child: Image.asset('images/getStartedPic.png'),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              height: 100.0,
+              width: 100.0,
+              child: Image.asset('images/mentalPuzzle.png'),
+            ),
+          ),
+          Center(
             child: Text(
               'Wellness Ethiopia',
               style: TextStyle(
-                fontSize: 20.0,
+                fontSize: 45.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          Expanded(
-            child: Text(
-              'some description',
-              style: TextStyle(
-                fontSize: 12.0,
+          Center(
+            child: Container(
+              margin: EdgeInsets.only(left: 30.0),
+              child: Text(
+                'The best mobile app to get help and communicate about your mental health, \nClick on the button below to get started.',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
               ),
             ),
           ),
-          TextButton(
-            onPressed: () {},
-            child: Text('Get Started'),
+          Expanded(
+            child: Center(
+              child: TextButton(
+                onPressed: () {},
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(70.0, 20.0, 70.0, 20.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    'Get Started',
+                    style:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
