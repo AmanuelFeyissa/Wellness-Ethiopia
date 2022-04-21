@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 
@@ -54,7 +54,9 @@ class GetStartedPage extends StatelessWidget {
           Expanded(
             child: Center(
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // TODO Add a route to the next page
+                },
                 child: Container(
                   padding: EdgeInsets.fromLTRB(70.0, 20.0, 70.0, 20.0),
                   decoration: BoxDecoration(
