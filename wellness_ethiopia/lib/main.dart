@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/screens/get_started_page.dart';
@@ -15,7 +15,7 @@ class WellnessApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF242BCB),
         primaryColor: Color(0xFF242BCB),
       ),
-      /* wellnessApp() Replace with a current page you are working on and
+      /* home: Replace with a current page you are working on and
          add your page for test purposes
       */
       home: GetStartedPage(),
