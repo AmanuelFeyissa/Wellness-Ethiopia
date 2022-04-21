@@ -19,6 +19,11 @@ class GetStartedPage extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 20.0,
+            width: 280.0,
+            child: Divider(color: Colors.white),
+          ),
           Center(
             child: Container(
               height: 100.0,
