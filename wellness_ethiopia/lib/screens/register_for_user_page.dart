@@ -61,20 +61,24 @@ class RegisterForUserPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   FormInputWidget(
-                    topMargin: 30.0,
+                    margin: EdgeInsets.fromLTRB(15.0, 30.0, 10.0, 0.0),
                     icon: Icons.email_sharp,
+                    width: 50.0,
                   ),
                   FormInputWidget(
-                    topMargin: 5.0,
+                    margin: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 0.0),
                     icon: Icons.supervised_user_circle,
+                    width: 50.0,
                   ),
                   FormInputWidget(
-                    topMargin: 5.0,
+                    margin: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 0.0),
                     icon: Icons.lock,
+                    width: 50.0,
                   ),
                   FormInputWidget(
-                    topMargin: 5.0,
+                    margin: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 0.0),
                     icon: Icons.lock,
+                    width: 50.0,
                   ),
                   Center(
                     child: TextButton(
