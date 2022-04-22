@@ -35,7 +35,6 @@ class SignInPage extends StatelessWidget {
           // description on register
           Center(
             child: Container(
-              margin: EdgeInsets.only(left: 30.0),
               child: Text(
                 'Enter Username and Password to sign in',
                 style: TextStyle(
