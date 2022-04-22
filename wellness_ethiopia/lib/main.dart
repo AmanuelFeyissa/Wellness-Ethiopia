@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/screens/get_started_page.dart';
 import 'package:wellness_ethiopia/screens/register_for_pro_page.dart';
 import 'package:wellness_ethiopia/screens/register_for_user_page.dart';
+import 'package:wellness_ethiopia/screens/signin_page.dart';
 import 'package:wellness_ethiopia/screens/signup_page.dart';
 
 void main() {
@@ -21,7 +22,7 @@ class WellnessApp extends StatelessWidget {
       /* home: Replace with a current page you are working on and
          add your page for test purposes
       */
-      home: RegisterForProPage(),
+      home: SignInPage(),
     );
   }
 }
