@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/constants.dart';
-import 'package:wellness_ethiopia/utilities/commonWhiteContainers.dart';
-import 'package:wellness_ethiopia/utilities/formInputWidget.dart';
+import 'package:wellness_ethiopia/utilities/common_white_containers.dart';
+import 'package:wellness_ethiopia/utilities/form_input_widget.dart';
 
 class RegisterForUserPage extends StatelessWidget {
   const RegisterForUserPage({Key? key}) : super(key: key);
