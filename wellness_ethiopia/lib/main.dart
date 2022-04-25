@@ -23,7 +23,7 @@ class WellnessApp extends StatelessWidget {
       /* home: Replace with a current page you are working on and
          add your page for test purposes
       */
-      home: SignInPage(),
+      home: homeScreen(),
     );
   }
 }
