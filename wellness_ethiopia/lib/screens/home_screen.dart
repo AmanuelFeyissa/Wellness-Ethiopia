@@ -88,14 +88,7 @@ class _homeScreenState extends State<homeScreen> {
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
-            selectedColor: Colors.purple,
-          ),
-
-          /// Likes
-          SalomonBottomBarItem(
-            icon: Icon(Icons.favorite_border),
-            title: Text("Likes"),
-            selectedColor: Colors.pink,
+            selectedColor: Color.fromARGB(211, 221, 20, 120),
           ),
 
           /// Search
