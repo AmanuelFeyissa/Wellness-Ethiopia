@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/screens/register_for_pro_page.dart';
+import 'package:wellness_ethiopia/screens/register_for_user_page.dart';
+import 'package:wellness_ethiopia/screens/signin_page.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({Key? key}) : super(key: key);
@@ -38,6 +41,10 @@ class SignupPage extends StatelessWidget {
           Center(
             child: TextButton(
               onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegisterForProPage()));
                 // TODO Add a route to signup form
               },
               child: Container(
@@ -59,6 +66,10 @@ class SignupPage extends StatelessWidget {
           Center(
             child: TextButton(
               onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RegisterForUserPage()));
                 // TODO Add a route to signup form
               },
               child: Container(
@@ -86,6 +97,8 @@ class SignupPage extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SignInPage()));
               // TODO Add a route to the next page
             },
             child: Text(

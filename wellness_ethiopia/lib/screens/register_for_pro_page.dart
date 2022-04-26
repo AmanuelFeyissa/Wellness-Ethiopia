@@ -71,7 +71,7 @@ class RegisterForProPage extends StatelessWidget {
                     width: 50.0,
                   ),
                   FormInputWidget(
-                    icon: Icons.note_alt,
+                    icon: Icons.file_copy,
                     margin: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 0.0),
                     width: 50.0,
                   ),

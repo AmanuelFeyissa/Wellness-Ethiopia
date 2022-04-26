@@ -88,7 +88,7 @@ class _homeScreenState extends State<homeScreen> {
           SalomonBottomBarItem(
             icon: Icon(Icons.home),
             title: Text("Home"),
-            selectedColor: Color.fromARGB(211, 221, 20, 120),
+            selectedColor: Color.fromARGB(235, 209, 208, 208),
           ),
 
           /// Search
@@ -111,7 +111,7 @@ class _homeScreenState extends State<homeScreen> {
         onPressed: () {},
 // ignore: prefer_const_constructors
         child: Icon(
-          Icons.add,
+          Icons.post_add,
           size: 30,
           color: Colors.blue,
         ),

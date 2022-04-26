@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/screens/signup_page.dart';
 
 class GetStartedPage extends StatelessWidget {
   @override
@@ -55,6 +56,8 @@ class GetStartedPage extends StatelessWidget {
             child: Center(
               child: TextButton(
                 onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignupPage()));
                   // TODO Add a route to the next page
                 },
                 child: Container(
