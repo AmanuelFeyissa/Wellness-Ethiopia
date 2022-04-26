@@ -62,7 +62,7 @@ class _homeScreenState extends State<homeScreen> {
     return Scaffold(
       appBar: AppBar(
         //title: Text('WELLNESS ETHIOPIA'),
-        backgroundColor: Color.fromARGB(218, 19, 54, 167),
+        backgroundColor: Color.fromARGB(197, 21, 44, 119),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 5, 25, 0),
@@ -79,7 +79,7 @@ class _homeScreenState extends State<homeScreen> {
           )
         ],
       ),
-      backgroundColor: Color.fromARGB(218, 19, 54, 167),
+      backgroundColor: Color.fromARGB(197, 21, 44, 119),
       bottomNavigationBar: SalomonBottomBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
