@@ -1,10 +1,12 @@
-// ignore_for_file: camel_case_types, prefer_const_constructors, duplicate_ignore
+// ignore_for_file: camel_case_types, prefer_const_constructors, duplicate_ignore, prefer_const_declarations
 
 import 'package:flutter/material.dart';
-import 'package:wellness_ethiopia/screens/get_started_page.dart';
+
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
+  static final title = 'salomon_bottom_bar';
 
   @override
   State<homeScreen> createState() => _homeScreenState();
@@ -13,7 +15,8 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   // ignore: non_constant_identifier_names
   //Function that creates the containers
-  // ignore: non_constant_identifier_names
+  // ignore: non_constant_identifier_names, prefer_final_fields
+  var _currentIndex = 0;
   Widget Contain() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -77,6 +80,39 @@ class _homeScreenState extends State<homeScreen> {
         ],
       ),
       backgroundColor: Color.fromARGB(218, 19, 54, 167),
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: _currentIndex,
+        onTap: (i) => setState(() => _currentIndex = i),
+        items: [
+          /// Home
+          SalomonBottomBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Home"),
+            selectedColor: Colors.purple,
+          ),
+
+          /// Likes
+          SalomonBottomBarItem(
+            icon: Icon(Icons.favorite_border),
+            title: Text("Likes"),
+            selectedColor: Colors.pink,
+          ),
+
+          /// Search
+          SalomonBottomBarItem(
+            icon: Icon(Icons.chat),
+            title: Text("Chat"),
+            selectedColor: Colors.orange,
+          ),
+
+          /// Profile
+          SalomonBottomBarItem(
+            icon: Icon(Icons.person),
+            title: Text("Profile"),
+            selectedColor: Colors.teal,
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
         onPressed: () {},
@@ -98,7 +134,7 @@ class _homeScreenState extends State<homeScreen> {
           Contain(),
           Contain(),
           Contain(),
-          Contain(),
+
           Contain(),
         ],
       ),
