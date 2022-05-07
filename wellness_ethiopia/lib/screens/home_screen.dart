@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:wellness_ethiopia/screens/post_page.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
@@ -39,24 +40,6 @@ class _homeScreenState extends State<homeScreen> {
     );
   }
 
-//I WAS TRYYING TO CREATE A CONTAINER THAT WE CAN USE AS AN AN APP BAR BUT THE BUTTON WAS NOT WORKING
-
-  // Widget appBar() {
-  //   return SafeArea(
-  //     child: Container(
-  //       height: 60,
-  //       color: Color.fromARGB(218, 19, 54, 167),
-  //       child: Padding(
-  //         padding: const EdgeInsets.fromLTRB(500, 15, 0, 30),
-  //         child: Icon(
-  //           Icons.search,
-  //           size: 40,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +56,7 @@ class _homeScreenState extends State<homeScreen> {
                 size: 40,
               ),
               onPressed: () {
+                setState(() {});
                 // do something
               },
             ),
@@ -108,7 +92,12 @@ class _homeScreenState extends State<homeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Add()));
+          });
+        },
 // ignore: prefer_const_constructors
         child: Icon(
           Icons.post_add,
