@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1090455101476",
+    "project_id": "wellness-eth",
+    "storage_bucket": "wellness-eth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090455101476:android:c02dda1e1a5871f764f8b1",
+        "android_client_info": {
+          "package_name": "com.example.wellness_ethiopia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090455101476-76a4pege7gfpnqoj48a3ap06b5e645qs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqICJprQm6O-I9Rhcz0Zn7xbNqzUmHFUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090455101476-76a4pege7gfpnqoj48a3ap06b5e645qs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
