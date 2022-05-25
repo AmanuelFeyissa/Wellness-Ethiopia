@@ -86,7 +86,7 @@ class _SearchState extends State<Search>
             return circularProgress();
           }
           List<UserResult> searchResults = [];
-          snapshot.data.documents.forEach((doc) {
+          snapshot.data.docs.forEach((doc) {
             User user = User.fromDocument(doc);
             UserResult searchResult = UserResult(user);
             searchResults.add(searchResult);

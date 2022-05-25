@@ -95,7 +95,7 @@ class _PostState extends State<Post> {
 
   buildPostHeader() {
     return FutureBuilder(
-      future: usersRef.document(ownerId).get(),
+      future: usersRef.doc(ownerId).get(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return circularProgress();
@@ -268,12 +268,13 @@ class _PostState extends State<Post> {
                   curve: Curves.elasticOut,
                   cycles: 0,
                   builder: (anim) => Transform.scale(
-                      scale: anim.value,
-                      child: Icon(
-                        Icons.favorite,
-                        size: 80.0,
-                        color: Colors.red,
-                      )),
+                    scale: anim.value,
+                    child: Icon(
+                      Icons.favorite,
+                      size: 80.0,
+                      color: Colors.red,
+                    ),
+                  ),
                 )
               : Text(""),
         ],

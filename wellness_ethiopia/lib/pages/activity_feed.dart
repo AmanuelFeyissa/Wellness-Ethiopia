@@ -35,7 +35,7 @@ class _ActivityFeedState extends State<ActivityFeed> {
       backgroundColor: Colors.orange,
       appBar: header(context, titleText: "Activity Feed"),
       body: Container(
-        child: FutureBuilder(
+        child: FutureBuilder<Iterable>(
           future: getActivityFeed(),
           builder: (context, snapshot) {
             if (!snapshot.hasData) {

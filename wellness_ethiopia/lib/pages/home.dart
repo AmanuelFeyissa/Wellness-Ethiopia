@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
 
   configurePushNotifications() {
     final GoogleSignInAccount? user = googleSignIn.currentUser;
-    if (Platform.isIOS) getiOSPermission();
+    // if (Platform.isIOS) getiOSPermission();
 
     _firebaseMessaging.getToken().then((token) {
       // print("Firebase Messaging Token: $token\n");
@@ -104,13 +104,13 @@ class _HomeState extends State<Home> {
     );
   }
 
-  getiOSPermission() {
-    _firebaseMessaging.requestNotificationPermissions(
-        IosNotificationSettings(alert: true, badge: true, sound: true));
-    _firebaseMessaging.onIosSettingsRegistered.listen((settings) {
-      // print("Settings registered: $settings");
-    });
-  }
+  // getiOSPermission() {
+  //   _firebaseMessaging.requestNotificationPermissions(
+  //       IosNotificationSettings(alert: true, badge: true, sound: true));
+  //   _firebaseMessaging.onIosSettingsRegistered.listen((settings) {
+  //     // print("Settings registered: $settings");
+  //   });
+  // }
 
   createUserInFirestore() async {
     // 1) check if user exists in users collection in database (according to their id)

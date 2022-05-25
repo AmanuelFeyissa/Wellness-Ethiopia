@@ -15,17 +15,17 @@ class _CreateAccountState extends State<CreateAccount> {
 
   submit() {
     final form = _formKey.currentState;
-    if (form.validate()) {
-      form.save();
-      SnackBar snackbar = SnackBar(
-        content: Text("Welcome $username!"),
-      );
-      //_scaffoldKey.currentState.showSnackBar(snackbar);
-      ScaffoldMessenger(key: _scaffoldKey, child: snackbar);
-      Timer(Duration(seconds: 2), () {
-        Navigator.pop(context, username);
-      });
-    }
+    // if (form.validate()) {
+    //   form.save();
+    //   SnackBar snackbar = SnackBar(
+    //     content: Text("Welcome $username!"),
+    //   );
+    //   //_scaffoldKey.currentState.showSnackBar(snackbar);
+    //   ScaffoldMessenger(key: _scaffoldKey, child: snackbar);
+    //   Timer(Duration(seconds: 2), () {
+    //     Navigator.pop(context, username);
+    //   });
+    // }
   }
 
   @override
@@ -55,16 +55,16 @@ class _CreateAccountState extends State<CreateAccount> {
                         autovalidateMode: AutovalidateMode.always,
                         key: _formKey,
                         child: TextFormField(
-                          validator: (val) {
-                            if (val.trim().length < 3 || val.isEmpty) {
-                              return "Username too short";
-                            } else if (val.trim().length > 12) {
-                              return "Username too long";
-                            } else {
-                              return null;
-                            }
-                          },
-                          onSaved: (val) => username = val,
+                          // validator: (val) {
+                          //   if (val.trim().length < 3 || val.isEmpty) {
+                          //     return "Username too short";
+                          //   } else if (val.trim().length > 12) {
+                          //     return "Username too long";
+                          //   } else {
+                          //     return null;
+                          //   }
+                          // },
+                          onSaved: (val) => username = "$val",
                           decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Username",
