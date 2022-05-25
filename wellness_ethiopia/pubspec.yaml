@@ -40,6 +40,15 @@ dependencies:
   google_sign_in: ^5.3.1
   provider: ^6.0.2
   firebase_core: ^1.17.0
+  cloud_firestore: ^3.1.16
+  cached_network_image: ^3.2.0
+  timeago: ^3.2.2
+  firebase_messaging: ^11.4.0
+  firebase_storage: ^10.2.16
+  flutter_svg: ^1.0.3
+  geolocator: ^8.2.1
+  image_picker: ^0.8.5+3
+  animator: ^3.2.0
 
 dev_dependencies:
   flutter_test:
