@@ -12,9 +12,9 @@ class Comments extends StatefulWidget {
   final String postMediaUrl;
 
   Comments({
-    this.postId,
-    this.postOwnerId,
-    this.postMediaUrl,
+    required this.postId,
+    required this.postOwnerId,
+    required this.postMediaUrl,
   });
 
   @override
@@ -32,15 +32,15 @@ class CommentsState extends State<Comments> {
   final String postMediaUrl;
 
   CommentsState({
-    this.postId,
-    this.postOwnerId,
-    this.postMediaUrl,
+    required this.postId,
+    required this.postOwnerId,
+    required this.postMediaUrl,
   });
 
   buildComments() {
     return StreamBuilder(
       stream: commentsRef
-          .document(postId)
+          .doc(postId)
           .collection('comments')
           .orderBy("timestamp", descending: false)
           .snapshots(),
@@ -49,7 +49,7 @@ class CommentsState extends State<Comments> {
           return circularProgress();
         }
         List<Comment> comments = [];
-        snapshot.data.documents.forEach((doc) {
+        snapshot.data.docs.forEach((doc) {
           comments.add(Comment.fromDocument(doc));
         });
         return ListView(
@@ -60,7 +60,7 @@ class CommentsState extends State<Comments> {
   }
 
   addComment() {
-    commentsRef.document(postId).collection("comments").add({
+    commentsRef.doc(postId).collection("comments").add({
       "username": currentUser.username,
       "comment": commentController.text,
       "timestamp": timestamp,
@@ -69,7 +69,7 @@ class CommentsState extends State<Comments> {
     });
     bool isNotPostOwner = postOwnerId != currentUser.id;
     if (isNotPostOwner) {
-      activityFeedRef.document(postOwnerId).collection('feedItems').add({
+      activityFeedRef.doc(postOwnerId).collection('feedItems').add({
         "type": "comment",
         "commentData": commentController.text,
         "username": currentUser.username,
@@ -116,11 +116,11 @@ class Comment extends StatelessWidget {
   final Timestamp timestamp;
 
   Comment({
-    this.username,
-    this.userId,
-    this.avatarUrl,
-    this.comment,
-    this.timestamp,
+    required this.username,
+    required this.userId,
+    required this.avatarUrl,
+    required this.comment,
+    required this.timestamp,
   });
 
   factory Comment.fromDocument(DocumentSnapshot doc) {

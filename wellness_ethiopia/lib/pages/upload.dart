@@ -16,7 +16,7 @@ import 'home.dart';
 class Upload extends StatefulWidget {
   final User currentUser;
 
-  Upload({this.currentUser});
+  Upload({required this.currentUser});
   @override
   _UploadState createState() => _UploadState();
 }
@@ -25,7 +25,7 @@ class _UploadState extends State<Upload>
     with AutomaticKeepAliveClientMixin<Upload> {
   TextEditingController captionController = TextEditingController();
   TextEditingController locationController = TextEditingController();
-  File file;
+  late File file;
   bool isUploading = false;
   String postId = Uuid().v4();
 
@@ -125,12 +125,15 @@ class _UploadState extends State<Upload>
     return downloadUrl;
   }
 
-  createPostInFiresore({String mediaUrl, String location, String description}) {
+  createPostInFiresore(
+      {required String mediaUrl,
+      required String location,
+      required String description}) {
     postsRef
-        .document(widget.currentUser.id)
+        .doc(widget.currentUser.id)
         .collection("userPosts")
-        .document(postId)
-        .setData({
+        .doc(postId)
+        .set({
       "postId": postId,
       "ownerId": widget.currentUser.id,
       "username": widget.currentUser.username,

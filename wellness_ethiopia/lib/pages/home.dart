@@ -15,14 +15,15 @@ import 'search.dart';
 import 'upload.dart';
 
 final GoogleSignIn googleSignIn = GoogleSignIn();
-final StorageReference storageRef = FirebaseStorage.instance.ref();
-final usersRef = Firestore.instance.collection('users');
-final postsRef = Firestore.instance.collection('posts');
-final commentsRef = Firestore.instance.collection('comments');
-final activityFeedRef = Firestore.instance.collection('feed');
-final followersRef = Firestore.instance.collection('followers');
-final followingRef = Firestore.instance.collection('following');
-final timelineRef = Firestore.instance.collection('timeline');
+// if any errors with database storage
+final Reference storageRef = FirebaseStorage.instance.ref();
+final usersRef = FirebaseFirestore.instance.collection('users');
+final postsRef = FirebaseFirestore.instance.collection('posts');
+final commentsRef = FirebaseFirestore.instance.collection('comments');
+final activityFeedRef = FirebaseFirestore.instance.collection('feed');
+final followersRef = FirebaseFirestore.instance.collection('followers');
+final followingRef = FirebaseFirestore.instance.collection('following');
+final timelineRef = FirebaseFirestore.instance.collection('timeline');
 final DateTime timestamp = DateTime.now();
 late User currentUser;
 
@@ -33,7 +34,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   bool isAuth = false;
   late PageController pageController;
   int pageIndex = 0;
@@ -73,14 +74,12 @@ class _HomeState extends State<Home> {
   }
 
   configurePushNotifications() {
-    final GoogleSignInAccount user = googleSignIn.currentUser;
+    final GoogleSignInAccount? user = googleSignIn.currentUser;
     if (Platform.isIOS) getiOSPermission();
 
     _firebaseMessaging.getToken().then((token) {
       // print("Firebase Messaging Token: $token\n");
-      usersRef
-          .document(user.id)
-          .updateData({"androidNotificationToken": token});
+      usersRef.doc(user?.id).update({"androidNotificationToken": token});
     });
 
     _firebaseMessaging.configure(
@@ -90,7 +89,7 @@ class _HomeState extends State<Home> {
         // print("on message: $message\n");
         final String recipientId = message['data']['recipient'];
         final String body = message['notification']['body'];
-        if (recipientId == user.id) {
+        if (recipientId == user?.id) {
           // print("Notification shown!");
           SnackBar snackBar = SnackBar(
               content: Text(
@@ -115,31 +114,31 @@ class _HomeState extends State<Home> {
 
   createUserInFirestore() async {
     // 1) check if user exists in users collection in database (according to their id)
-    final GoogleSignInAccount user = googleSignIn.currentUser;
-    DocumentSnapshot doc = await usersRef.document(user.id).get();
+    final GoogleSignInAccount? user = googleSignIn.currentUser;
+    DocumentSnapshot doc = await usersRef.doc(user?.id).get();
     // 2) if the user doesn't exist, then we want to take them to the create account page
     if (!doc.exists) {
       final username = await Navigator.push(
           context, MaterialPageRoute(builder: (context) => CreateAccount()));
 
       // 3) get username from create account, use it to make new user document in users collection
-      usersRef.document(user.id).setData({
-        "id": user.id,
+      usersRef.doc(user?.id).set({
+        "id": user?.id,
         "username": username,
-        "photoUrl": user.photoUrl,
-        "email": user.email,
-        "displayName": user.displayName,
+        "photoUrl": user?.photoUrl,
+        "email": user?.email,
+        "displayName": user?.displayName,
         "bio": "",
         "timestamp": timestamp
       });
       // make new user their own follower (to include their posts in their timeline)
       await followersRef
-          .document(user.id)
+          .doc(user?.id)
           .collection('userFollowers')
-          .document(user.id)
-          .setData({});
+          .doc(user?.id)
+          .set({});
 
-      doc = await usersRef.document(user.id).get();
+      doc = await usersRef.doc(user?.id).get();
     }
     currentUser = User.fromDocument(doc);
     // print(currentUser);
@@ -184,7 +183,7 @@ class _HomeState extends State<Home> {
           ActivityFeed(),
           Upload(currentUser: currentUser),
           Search(),
-          Profile(profileId: currentUser?.id),
+          Profile(profileId: currentUser.id),
         ],
         controller: pageController,
         onPageChanged: onPageChanged,

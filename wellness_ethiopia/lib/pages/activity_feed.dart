@@ -16,13 +16,13 @@ class ActivityFeed extends StatefulWidget {
 class _ActivityFeedState extends State<ActivityFeed> {
   getActivityFeed() async {
     QuerySnapshot snapshot = await activityFeedRef
-        .document(currentUser.id)
+        .doc(currentUser.id)
         .collection('feedItems')
         .orderBy('timestamp', descending: true)
         .limit(50)
-        .getDocuments();
+        .get();
     List<ActivityFeedItem> feedItems = [];
-    snapshot.documents.forEach((doc) {
+    snapshot.docs.forEach((doc) {
       feedItems.add(ActivityFeedItem.fromDocument(doc));
       //   print('Activity Feed Item: ${doc.data}');
     });
@@ -65,14 +65,14 @@ class ActivityFeedItem extends StatelessWidget {
   final Timestamp timestamp;
 
   ActivityFeedItem({
-    this.username,
-    this.userId,
-    this.type, // 'like', 'follow', 'comment'
-    this.mediaUrl,
-    this.postId,
-    this.userProfileImg,
-    this.commentData,
-    this.timestamp,
+    required this.username,
+    required this.userId,
+    required this.type, // 'like', 'follow', 'comment'
+    required this.mediaUrl,
+    required this.postId,
+    required this.userProfileImg,
+    required this.commentData,
+    required this.timestamp,
   });
 
   factory ActivityFeedItem.fromDocument(DocumentSnapshot doc) {

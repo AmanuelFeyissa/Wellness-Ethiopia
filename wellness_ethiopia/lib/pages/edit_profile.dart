@@ -10,7 +10,7 @@ import 'home.dart';
 class EditProfile extends StatefulWidget {
   final String currentUserId;
 
-  EditProfile({this.currentUserId});
+  EditProfile({required this.currentUserId});
 
   @override
   _EditProfileState createState() => _EditProfileState();
@@ -21,7 +21,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController displayNameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
   bool isLoading = false;
-  User user;
+  late User user;
   bool _displayNameValid = true;
   bool _bioValid = true;
 
@@ -35,7 +35,7 @@ class _EditProfileState extends State<EditProfile> {
     setState(() {
       isLoading = true;
     });
-    DocumentSnapshot doc = await usersRef.document(widget.currentUserId).get();
+    DocumentSnapshot doc = await usersRef.doc(widget.currentUserId).get();
     user = User.fromDocument(doc);
     displayNameController.text = user.displayName;
     bioController.text = user.bio;
@@ -100,7 +100,7 @@ class _EditProfileState extends State<EditProfile> {
     });
 
     if (_displayNameValid && _bioValid) {
-      usersRef.document(widget.currentUserId).updateData({
+      usersRef.doc(widget.currentUserId).update({
         "displayName": displayNameController.text,
         "bio": bioController.text,
       });

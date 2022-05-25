@@ -8,16 +8,12 @@ class PostScreen extends StatelessWidget {
   final String userId;
   final String postId;
 
-  PostScreen({this.userId, this.postId});
+  PostScreen({required this.userId, required this.postId});
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: postsRef
-          .document(userId)
-          .collection('userPosts')
-          .document(postId)
-          .get(),
+      future: postsRef.doc(userId).collection('userPosts').doc(postId).get(),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return circularProgress();

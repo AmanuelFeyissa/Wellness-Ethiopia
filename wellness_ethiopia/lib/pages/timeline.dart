@@ -7,12 +7,13 @@ import '../widgets/header.dart';
 import '../widgets/progress.dart';
 import 'home.dart';
 
-final CollectionReference usersRef = Firestore.instance.collection('users');
+final CollectionReference usersRef =
+    FirebaseFirestore.instance.collection('users');
 
 class Timeline extends StatefulWidget {
   final User currentUser;
 
-  Timeline({this.currentUser});
+  Timeline({required this.currentUser});
 
   @override
   _TimelineState createState() => _TimelineState();
@@ -35,12 +36,12 @@ class _TimelineState extends State<Timeline> {
 
   getTimeline() async {
     QuerySnapshot snapshot = await timelineRef
-        .document(widget.currentUser.id)
+        .doc(widget.currentUser.id)
         .collection('timelinePosts')
         .orderBy('timestamp', descending: true)
-        .getDocuments();
+        .get();
     List<Post> posts =
-        snapshot.documents.map((doc) => Post.fromDocument(doc)).toList();
+        snapshot.docs.map((doc) => Post.fromDocument(doc)).toList();
     setState(() {
       this.posts = posts;
     });
@@ -48,9 +49,9 @@ class _TimelineState extends State<Timeline> {
 
   getFollowing() async {
     QuerySnapshot snapshot = await followingRef
-        .document(currentUser.id)
+        .doc(currentUser.id)
         .collection('userFollowing')
-        .getDocuments();
+        .get();
     setState(() {
       followingList = snapshot.documents.map((doc) => doc.documentID).toList();
     });
