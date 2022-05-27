@@ -17,11 +17,12 @@ void main() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-          apiKey: "AIzaSyCZ-xrXqD5D19Snauto-Fx_nLD7PLrBXGM",
-          appId: "1:585119731880:web:eca6e4b3c42a755cee329d",
+          apiKey: "AIzaSyA-JytH6cA5ks2TDCGj3wu08VNCb6TdoNY",
+          appId: "1:1090455101476:android:c02dda1e1a5871f764f8b1",
           messagingSenderId: "585119731880",
-          projectId: "instagram-clone-4cea4",
-          storageBucket: 'instagram-clone-4cea4.appspot.com'),
+          projectId: "wellness-eth",
+          storageBucket:
+              'https://console.firebase.google.com/project/wellness-eth/storage/wellness-eth.appspot.com/files'),
     );
   } else {
     await Firebase.initializeApp();
