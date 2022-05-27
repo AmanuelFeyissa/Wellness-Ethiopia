@@ -1,122 +1,80 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
-
-import 'package:flutter/material.dart';
-import 'package:wellness_ethiopia/screens/get_started_page.dart';
-import 'package:wellness_ethiopia/screens/home_screen.dart';
-import 'package:wellness_ethiopia/screens/register_for_pro_page.dart';
-import 'package:wellness_ethiopia/screens/register_for_user_page.dart';
-import 'package:wellness_ethiopia/screens/signin_page.dart';
-import 'package:wellness_ethiopia/screens/signup_page.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/providers/user_provider.dart';
+import 'package:wellness_ethiopia/responsive/mobile_screen_layout.dart';
+import 'package:wellness_ethiopia/responsive/responsive_layout.dart';
+import 'package:wellness_ethiopia/responsive/web_screen_layout.dart';
+import 'package:wellness_ethiopia/screens/login_screen.dart';
+import 'package:wellness_ethiopia/utilities/colors.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: Home(),
-  ));
-}
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
-
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  GoogleSignInAccount? _currentUser;
-
-  @override
-  void initState() {
-    _googleSignIn.onCurrentUserChanged.listen((account) {
-      setState(() {
-        _currentUser = account;
-      });
-    });
-    _googleSignIn.signInSilently();
-    super.initState();
+  // initialise app based on platform- web or mobile
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+      options: const FirebaseOptions(
+          apiKey: "AIzaSyCZ-xrXqD5D19Snauto-Fx_nLD7PLrBXGM",
+          appId: "1:585119731880:web:eca6e4b3c42a755cee329d",
+          messagingSenderId: "585119731880",
+          projectId: "instagram-clone-4cea4",
+          storageBucket: 'instagram-clone-4cea4.appspot.com'),
+    );
+  } else {
+    await Firebase.initializeApp();
   }
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Google Sign in'),
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        child: _buildWidget(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Instagram Clone',
+        theme: ThemeData.dark().copyWith(
+          scaffoldBackgroundColor: mobileBackgroundColor,
+        ),
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.active) {
+              // Checking if the snapshot has any data or not
+              if (snapshot.hasData) {
+                // if snapshot has data which means user is logged in then we check the width of screen and accordingly display the screen layout
+                return const ResponsiveLayout(
+                  mobileScreenLayout: MobileScreenLayout(),
+                  webScreenLayout: WebScreenLayout(),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text('${snapshot.error}'),
+                );
+              }
+            }
+
+            // means connection to future hasnt been made yet
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            return const LoginScreen();
+          },
+        ),
       ),
     );
-  }
-
-  Widget _buildWidget() {
-    GoogleSignInAccount? user = _currentUser;
-    if (user != null) {
-      return Padding(
-        padding: const EdgeInsets.fromLTRB(2, 12, 2, 12),
-        child: Column(
-          children: [
-            ListTile(
-              leading: GoogleUserCircleAvatar(identity: user),
-              title: Text(
-                user.displayName ?? '',
-                style: TextStyle(fontSize: 22),
-              ),
-              subtitle: Text(user.email, style: TextStyle(fontSize: 22)),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'Signed in successfully',
-              style: TextStyle(fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(onPressed: signOut, child: const Text('Sign out'))
-          ],
-        ),
-      );
-    } else {
-      return Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              'You are not signed in',
-              style: TextStyle(fontSize: 30),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-                onPressed: signIn,
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('Sign in', style: TextStyle(fontSize: 30)),
-                )),
-          ],
-        ),
-      );
-    }
-  }
-
-  void signOut() {
-    _googleSignIn.disconnect();
-  }
-
-  Future<void> signIn() async {
-    try {
-      await _googleSignIn.signIn();
-    } catch (e) {
-      print('Error signing in $e');
-    }
   }
 }
