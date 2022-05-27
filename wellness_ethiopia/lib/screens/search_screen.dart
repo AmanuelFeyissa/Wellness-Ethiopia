@@ -16,6 +16,10 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController searchController = TextEditingController();
   bool isShowUsers = false;
 
+  get StaggeredGridView => null;
+
+  get StaggeredTile => null;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
