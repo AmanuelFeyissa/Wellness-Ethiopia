@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wellness_ethiopia/screens/chat_page.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
 import 'package:wellness_ethiopia/widgets/post_card.dart';
@@ -36,7 +37,12 @@ class _FeedScreenState extends State<FeedScreen> {
                     Icons.messenger_outline,
                     color: primaryColor,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ChatPage()));
+                  },
                 ),
               ],
             ),
