@@ -56,6 +56,9 @@ dependencies:
   mime: ^1.0.2
   open_file: ^3.2.1
 
+  flutter_firebase_chat_core:
+  http: ^0.13.4
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

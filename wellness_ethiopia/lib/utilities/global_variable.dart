@@ -5,7 +5,7 @@ import 'package:wellness_ethiopia/screens/feed_screen.dart';
 import 'package:wellness_ethiopia/screens/profile_screen.dart';
 import 'package:wellness_ethiopia/screens/search_screen.dart';
 
-const webScreenSize = 600;
+const webScreenSize = 900;
 
 List<Widget> homeScreenItems = [
   const FeedScreen(),
