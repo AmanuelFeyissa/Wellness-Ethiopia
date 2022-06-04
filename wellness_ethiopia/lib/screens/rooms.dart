@@ -116,10 +116,7 @@ class _RoomsPageState extends State<RoomsPage> {
         ],
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const FeedScreen()));
-          },
+          onPressed: _user == null ? null : logout,
         ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
         title: const Text('Rooms'),
