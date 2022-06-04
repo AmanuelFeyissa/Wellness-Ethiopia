@@ -72,15 +72,8 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
-              color: (_page == 3) ? primaryColor : secondaryColor,
-            ),
-            label: '',
-            backgroundColor: primaryColor,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.person,
+              // TODO FIX ROUTING
               color: (_page == 4) ? primaryColor : secondaryColor,
             ),
             label: '',
