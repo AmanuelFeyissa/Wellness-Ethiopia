@@ -7,7 +7,7 @@ class Post {
   final likes;
   final String postId;
   final DateTime datePublished;
-  final String postUrl;
+  //final String postUrl;
   final String profImage;
 
   const Post({
@@ -17,7 +17,7 @@ class Post {
     required this.likes,
     required this.postId,
     required this.datePublished,
-    required this.postUrl,
+    // required this.postUrl,
     required this.profImage,
   });
 
@@ -31,7 +31,7 @@ class Post {
         postId: snapshot["postId"],
         datePublished: snapshot["datePublished"],
         username: snapshot["username"],
-        postUrl: snapshot['postUrl'],
+        // postUrl: snapshot['postUrl'],
         profImage: snapshot['profImage']);
   }
 
@@ -42,7 +42,7 @@ class Post {
         "username": username,
         "postId": postId,
         "datePublished": datePublished,
-        'postUrl': postUrl,
+        // 'postUrl': postUrl,
         'profImage': profImage
       };
 }

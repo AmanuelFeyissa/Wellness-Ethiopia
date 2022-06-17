@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/resources/firestore_methods.dart';
+import 'package:wellness_ethiopia/screens/feed_screen.dart';
 import 'package:wellness_ethiopia/services/posts.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/utils.dart';
@@ -71,7 +72,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       // upload to storage and db
       String res = await FireStoreMethods().uploadPost(
         _descriptionController.text,
-        _file!,
+        //_file!,
         uid,
         username,
         profImage,
@@ -84,7 +85,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
           context,
           'Posted!',
         );
-        clearImage();
+        setState(() async {
+          _descriptionController.text = "";
+          //Navigator.pop(context);
+        });
+        //clearImage();
       } else {
         showSnackBar(context, res);
       }
@@ -102,7 +107,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   void clearImage() {
     setState(() {
       // TODO Go back to home
-      // _file = null;
+      _file = null;
     });
   }
 
@@ -130,10 +135,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
         backgroundColor: mobileBackgroundColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: clearImage,
+          onPressed: () async {
+            // Navigator.pop(context);
+            //TODO routing the back
+          },
         ),
         title: const Text(
-          'Post to',
+          'Add Post',
         ),
         centerTitle: false,
         actions: <Widget>[
