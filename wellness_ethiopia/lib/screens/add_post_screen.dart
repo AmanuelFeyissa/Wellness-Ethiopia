@@ -85,7 +85,11 @@ class _AddPostScreenState extends State<AddPostScreen> {
           context,
           'Posted!',
         );
-        clearImage();
+        setState(() async {
+          _descriptionController.text = "";
+          //Navigator.pop(context);
+        });
+        //clearImage();
       } else {
         showSnackBar(context, res);
       }
@@ -103,7 +107,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   void clearImage() {
     setState(() {
       // TODO Go back to home
-      // _file = null;
+      _file = null;
     });
   }
 
@@ -131,10 +135,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
         backgroundColor: mobileBackgroundColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: clearImage,
+          onPressed: () async {
+            // Navigator.pop(context);
+            //TODO routing the back
+          },
         ),
         title: const Text(
-          'Post to',
+          'Add Post',
         ),
         centerTitle: false,
         actions: <Widget>[
