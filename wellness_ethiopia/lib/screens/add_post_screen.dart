@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/resources/firestore_methods.dart';
+import 'package:wellness_ethiopia/screens/feed_screen.dart';
 import 'package:wellness_ethiopia/services/posts.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/utils.dart';
@@ -71,7 +72,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
       // upload to storage and db
       String res = await FireStoreMethods().uploadPost(
         _descriptionController.text,
-        _file!,
+        //_file!,
         uid,
         username,
         profImage,
