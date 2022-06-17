@@ -8,6 +8,8 @@ import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/utils.dart';
 import 'package:wellness_ethiopia/widgets/follow_button.dart';
 
+import 'chat_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   final String uid;
   const ProfileScreen({Key? key, required this.uid}) : super(key: key);
@@ -169,7 +171,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                                     followers++;
                                                   });
                                                 },
-                                              )
+                                              ),
+                                    FollowButton(
+                                        text: 'Message',
+                                        backgroundColor: Colors.black,
+                                        textColor: Colors.white,
+                                        borderColor: Colors.black,
+                                        function: () {}
+                                        //sendUserToChatPage(context),
+                                        ),
                                   ],
                                 ),
                               ],
@@ -242,6 +252,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           );
   }
+
+  // sendUserToChatPage(BuildContext context) {
+
+  //     Navigator.push(context, MaterialPageRoute(builder: ((context) => ChatScreen(receiverId: , receiverAvatar: eachUser.photoUrl, receiverName: eachUser.username),),),);
+
+  //   }
 
   Column buildStatColumn(int num, String label) {
     return Column(

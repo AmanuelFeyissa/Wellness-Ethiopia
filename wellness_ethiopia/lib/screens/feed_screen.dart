@@ -6,6 +6,8 @@ import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
 import 'package:wellness_ethiopia/widgets/post_card.dart';
 
+import 'chat_screen.dart';
+
 class FeedScreen extends StatefulWidget {
   const FeedScreen({Key? key}) : super(key: key);
 
@@ -39,7 +41,9 @@ class _FeedScreenState extends State<FeedScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const ChatPage()));
+                            builder: (context) => ChatScreen(
+                                  email: 'aman@gmail.com',
+                                )));
                   },
                 ),
               ],
