@@ -87,7 +87,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
           context,
           'Posted!',
         );
-        setState(() async {
+        setState(() {
           _descriptionController.text = "";
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const MobileScreenLayout()),
