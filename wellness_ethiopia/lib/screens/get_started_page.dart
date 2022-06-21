@@ -1,7 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/screens/login_screen.dart';
 import 'package:wellness_ethiopia/screens/signup_page.dart';
+import 'package:wellness_ethiopia/screens/signup_screen.dart';
 
 class GetStartedPage extends StatelessWidget {
   @override
@@ -47,7 +49,7 @@ class GetStartedPage extends StatelessWidget {
               child: Text(
                 'The best mobile app to get help and communicate about your mental health, \nClick on the button below to get started.',
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 18.0,
                 ),
               ),
             ),
@@ -57,7 +59,7 @@ class GetStartedPage extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignupPage()));
+                      MaterialPageRoute(builder: (context) => SignupScreen()));
                   // TODO Add a route to the next page
                 },
                 child: Container(
