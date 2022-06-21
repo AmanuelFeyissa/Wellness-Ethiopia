@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/resources/firestore_methods.dart';
+import 'package:wellness_ethiopia/responsive/mobile_screen_layout.dart';
 import 'package:wellness_ethiopia/screens/feed_screen.dart';
+import 'package:wellness_ethiopia/screens/home_screen.dart';
 import 'package:wellness_ethiopia/services/posts.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/utils.dart';
@@ -87,6 +89,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
         );
         setState(() async {
           _descriptionController.text = "";
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const MobileScreenLayout()),
+          );
           //Navigator.pop(context);
         });
         //clearImage();
