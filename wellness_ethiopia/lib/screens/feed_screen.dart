@@ -38,12 +38,8 @@ class _FeedScreenState extends State<FeedScreen> {
                     color: primaryColor,
                   ),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ChatScreen(
-                                  email: 'aman@gmail.com',
-                                )));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ChatScreen()));
                   },
                 ),
               ],

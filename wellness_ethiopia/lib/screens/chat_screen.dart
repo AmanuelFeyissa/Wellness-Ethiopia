@@ -1,89 +1,53 @@
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'feed_screen.dart';
-import 'login_screen.dart';
-import 'messages.dart';
+import '../widgets/chats/messages.dart';
+import '../widgets/chats/new_message.dart';
 
-class ChatScreen extends StatefulWidget {
-  String email;
-  ChatScreen({required this.email});
-  @override
-  _ChatScreenState createState() => _ChatScreenState(email: email);
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  String email;
-  _ChatScreenState({required this.email});
-
-  final fs = FirebaseFirestore.instance;
-  final _auth = FirebaseAuth.instance;
-  final TextEditingController message = new TextEditingController();
-
+class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Chat Room',
-          ),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.79,
-              child: messages(
-                email: email,
-              ),
+        title: Text('Chat app'),
+        actions: [
+          DropdownButton(
+            icon: Icon(
+              Icons.more_vert,
+              color: Theme.of(context).primaryIconTheme.color,
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: message,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.purple[100],
-                      hintText: 'message',
-                      enabled: true,
-                      contentPadding: const EdgeInsets.only(
-                          left: 14.0, bottom: 8.0, top: 8.0),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: new BorderSide(color: Colors.purple),
-                        borderRadius: new BorderRadius.circular(10),
+            items: [
+              DropdownMenuItem(
+                child: Container(
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.exit_to_app,
+                        color: Colors.black87,
                       ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: new BorderSide(color: Colors.purple),
-                        borderRadius: new BorderRadius.circular(10),
+                      SizedBox(
+                        width: 8,
                       ),
-                    ),
-                    validator: (value) {},
-                    onSaved: (value) {
-                      message.text = value!;
-                    },
+                      Text('Logout'),
+                    ],
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    if (message.text.isNotEmpty) {
-                      fs.collection('Messages').doc().set({
-                        'message': message.text.trim(),
-                        'time': DateTime.now(),
-                        'email': email,
-                      });
-
-                      message.clear();
-                    }
-                  },
-                  icon: Icon(Icons.send_sharp),
-                ),
-              ],
+                value: 'logout',
+              ),
+            ],
+            onChanged: (itemIdentifier) {
+              if (itemIdentifier == 'logout') FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(
+              child: Messages(),
             ),
+            NewMessage(),
           ],
         ),
       ),
