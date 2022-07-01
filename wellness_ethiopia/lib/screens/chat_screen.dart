@@ -1,54 +1,160 @@
-import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/Screens/ChatRoom.dart';
+import 'package:wellness_ethiopia/group_chats/group_chat_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../widgets/chats/messages.dart';
-import '../widgets/chats/new_message.dart';
+import 'package:flutter/material.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
+  @override
+  _ChatScreenState createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
+  Map<String, dynamic>? userMap;
+  bool isLoading = false;
+  final TextEditingController searchController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addObserver(this);
+    setStatus("Online");
+  }
+
+  void setStatus(String status) async {
+    await _firestore.collection('users').doc(_auth.currentUser!.uid).update({
+      "status": status,
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // online
+      setStatus("Online");
+    } else {
+      // offline
+      setStatus("Offline");
+    }
+  }
+
+  String chatRoomId(String user1, String user2) {
+    if (user1[0].toLowerCase().codeUnits[0] >
+        user2.toLowerCase().codeUnits[0]) {
+      return "$user1$user2";
+    } else {
+      return "$user2$user1";
+    }
+  }
+
+  void onSearch() async {
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    setState(() {
+      isLoading = true;
+    });
+
+    await _firestore
+        .collection('users')
+        .where("username", isEqualTo: searchController.text)
+        .get()
+        .then((value) {
+      setState(() {
+        userMap = value.docs[0].data();
+        isLoading = false;
+      });
+      print(userMap);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat app'),
-        actions: [
-          DropdownButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: Theme.of(context).primaryIconTheme.color,
-            ),
-            items: [
-              DropdownMenuItem(
-                child: Container(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.exit_to_app,
-                        color: Colors.black87,
+        title: Text("Home Screen"),
+      ),
+      body: isLoading
+          ? Center(
+              child: Container(
+                height: size.height / 20,
+                width: size.height / 20,
+                child: CircularProgressIndicator(),
+              ),
+            )
+          : Column(
+              children: [
+                SizedBox(
+                  height: size.height / 20,
+                ),
+                Container(
+                  height: size.height / 14,
+                  width: size.width,
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: size.height / 14,
+                    width: size.width / 1.15,
+                    child: TextField(
+                      controller: searchController,
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text('Logout'),
-                    ],
+                    ),
                   ),
                 ),
-                value: 'logout',
-              ),
-            ],
-            onChanged: (itemIdentifier) {
-              if (itemIdentifier == 'logout') FirebaseAuth.instance.signOut();
-            },
-          ),
-        ],
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: Messages(),
+                SizedBox(
+                  height: size.height / 50,
+                ),
+                ElevatedButton(
+                  onPressed: onSearch,
+                  child: Text("Search"),
+                ),
+                SizedBox(
+                  height: size.height / 30,
+                ),
+                userMap != null
+                    ? ListTile(
+                        onTap: () {
+                          String roomId = chatRoomId(
+                              _auth.currentUser!.uid, userMap!['username']);
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => ChatRoom(
+                                chatRoomId: roomId,
+                                userMap: userMap!,
+                              ),
+                            ),
+                          );
+                        },
+                        leading:
+                            Icon(Icons.account_box, color: Colors.blueAccent),
+                        title: Text(
+                          userMap!['username'],
+                          style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        subtitle: Text(userMap!['email']),
+                        trailing: Icon(Icons.chat, color: Colors.blueAccent),
+                      )
+                    : Container(),
+              ],
             ),
-            NewMessage(),
-          ],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.group),
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => GroupChatHomeScreen(),
+          ),
         ),
       ),
     );
