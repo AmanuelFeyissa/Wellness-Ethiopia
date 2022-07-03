@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:wellness_ethiopia/constants.dart';
 import 'package:wellness_ethiopia/screens/profile_screen.dart';
+import 'package:wellness_ethiopia/screens/search_feature_screens/depression.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
+
+import '../widgets/commonCard.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -107,7 +111,67 @@ class _SearchScreenState extends State<SearchScreen> {
                 //   mainAxisSpacing: 8.0,
                 //   crossAxisSpacing: 8.0,
                 // );
-                return Container();
+                return Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: CommonCard(
+                              onPressed: () {
+                                //Navigate to Page
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Depression()));
+                              },
+                              color: kPictureBackgroundColor,
+                              // Change image to your liking
+                              image: Image.asset('images/depression.png'),
+                            ),
+                          ),
+                          Expanded(
+                            child: CommonCard(
+                              onPressed: () {
+                                //Navigate to Page
+                              },
+                              color: kPictureBackgroundColor,
+                              // Change image to your liking
+                              image: Image.asset('images/'),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Expanded(
+                            child: CommonCard(
+                              onPressed: () {
+                                //Navigate to Page
+                              },
+                              color: kPictureBackgroundColor,
+                              // Change image to your liking
+                              image: Image.asset('images/'),
+                            ),
+                          ),
+                          Expanded(
+                            child: CommonCard(
+                              onPressed: () {
+                                //Navigate to Page
+                              },
+                              color: kPictureBackgroundColor,
+                              // Change image to your liking
+                              image: Image.asset('images/'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                );
               },
             ),
     );
