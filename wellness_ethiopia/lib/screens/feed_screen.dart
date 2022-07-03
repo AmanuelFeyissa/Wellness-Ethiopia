@@ -1,6 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wellness_ethiopia/screens/add_post_screen.dart';
 import 'package:wellness_ethiopia/screens/chat_page.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
@@ -27,6 +30,7 @@ class _FeedScreenState extends State<FeedScreen> {
           ? null
           : AppBar(
               backgroundColor: mobileBackgroundColor,
+              automaticallyImplyLeading: false,
               centerTitle: false,
               title: const Text(
                 'Wellness Ethiopia',
@@ -82,6 +86,30 @@ class _FeedScreenState extends State<FeedScreen> {
             //   ],
             // );
           }),
+      // ignore: prefer_const_constructors
+      floatingActionButton: SizedBox(
+        height: 80,
+        width: 80,
+        child: Align(
+          alignment: Alignment(1, -1),
+          child: FloatingActionButton(
+            backgroundColor: primaryColor,
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => AddPostScreen()));
+            },
+
+            // shape: RoundedRectangleBorder(
+            //   borderRadius: BorderRadius.circular(50),
+            // ),
+
+            child: const Icon(
+              Icons.add,
+              size: 50.0,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
