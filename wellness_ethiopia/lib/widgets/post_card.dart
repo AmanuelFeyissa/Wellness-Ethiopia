@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:wellness_ethiopia/constants.dart';
 import 'package:wellness_ethiopia/models/user.dart' as model;
 import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/resources/firestore_methods.dart';
@@ -215,25 +216,33 @@ class _PostCardState extends State<PostCard> {
                   padding: const EdgeInsets.only(
                     top: 8,
                   ),
-                  child: RichText(
-                    text: TextSpan(
-                      style: const TextStyle(color: primaryColor),
-                      children: [
-                        // TextSpan(
-                        //   text: widget.snap['username'].toString(),
-                        //   style: const TextStyle(
-                        //     fontWeight: FontWeight.bold,
-                        //   ),
-                        // ),
+                  child: Container(
+                    //margin: const EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: kPictureBackgroundColor,
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        style: const TextStyle(color: primaryColor),
+                        children: [
+                          // TextSpan(
+                          //   text: widget.snap['username'].toString(),
+                          //   style: const TextStyle(
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
 
-                        TextSpan(
-                          text: ' ${widget.snap['description']}',
-                          style: const TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 20,
+                          TextSpan(
+                            text: ' ${widget.snap['description']}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -292,6 +301,7 @@ class _PostCardState extends State<PostCard> {
             alignment: const Alignment(-1.0, 0.0),
             child: InkWell(
               child: Container(
+                margin: EdgeInsets.only(left: 10.0),
                 child: Text(
                   'View all $commentLen comments',
                   style: const TextStyle(
@@ -313,6 +323,7 @@ class _PostCardState extends State<PostCard> {
           Align(
             alignment: const Alignment(-1.0, 0.0),
             child: Container(
+              margin: EdgeInsets.only(left: 10.0),
               child: Text(
                 DateFormat.yMMMd()
                     .format(widget.snap['datePublished'].toDate()),

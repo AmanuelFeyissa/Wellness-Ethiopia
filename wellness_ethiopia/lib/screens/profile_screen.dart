@@ -185,7 +185,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   backgroundColor: mobileBackgroundColor,
                                   textColor: primaryColor,
                                   borderColor: Colors.grey,
-                                  function: () {}
+                                  function: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ChatScreen()));
+                                  }
                                   //sendUserToChatPage(context),
                                   ),
                             ],
