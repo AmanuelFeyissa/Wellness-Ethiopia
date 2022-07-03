@@ -141,7 +141,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () async {
-            // Navigator.pop(context);
+            Navigator.pop(context);
             //TODO routing the back
           },
         ),

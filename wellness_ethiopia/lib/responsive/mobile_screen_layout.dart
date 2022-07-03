@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
 
@@ -63,13 +64,13 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               ),
               label: '',
               backgroundColor: primaryColor),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add_circle,
-                color: (_page == 2) ? primaryColor : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: primaryColor),
+          // BottomNavigationBarItem(
+          //     icon: Icon(
+          //       Icons.add_circle,
+          //       color: (_page == 2) ? primaryColor : secondaryColor,
+          //     ),
+          //     label: 'Add post',
+          //     backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
