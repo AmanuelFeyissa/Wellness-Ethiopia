@@ -64,13 +64,13 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               ),
               label: '',
               backgroundColor: primaryColor),
-          // BottomNavigationBarItem(
-          //     icon: Icon(
-          //       Icons.add_circle,
-          //       color: (_page == 2) ? primaryColor : secondaryColor,
-          //     ),
-          //     label: 'Add post',
-          //     backgroundColor: primaryColor),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.explore_sharp,
+                color: (_page == 2) ? primaryColor : secondaryColor,
+              ),
+              //label: 'Add post',
+              backgroundColor: primaryColor),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.person,
