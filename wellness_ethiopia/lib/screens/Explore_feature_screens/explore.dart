@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/screens/Explore_feature_screens/depression.dart';
+import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/widgets/commonCard.dart';
 import 'package:wellness_ethiopia/constants.dart';
+
+import '../../utilities/global_variable.dart';
 
 class Explore extends StatelessWidget {
   const Explore({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor:
+          width > webScreenSize ? webBackgroundColor : mobileBackgroundColor,
       appBar: AppBar(
         title: const Text('Explore Page'),
       ),
@@ -106,69 +112,73 @@ class Explore extends StatelessWidget {
           const SizedBox(
             height: 5.0,
           ),
-          Row(
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+          Expanded(
+            child: Row(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // Route
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // Route
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // Route
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          Row(
-            //crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // ROute
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+          Expanded(
+            child: Row(
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // ROute
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // Route
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                Expanded(
+                  child: CommonCard(
+                    onPressed: () {
+                      // Route
+                    },
+                    color: kPictureBackgroundColor,
+                    image: Image.asset('images/mentalPuzzle.png'),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

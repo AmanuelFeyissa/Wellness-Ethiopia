@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/constants.dart';
+import 'package:wellness_ethiopia/screens/Explore_feature_screens/dep.dart';
 import 'package:wellness_ethiopia/widgets/commonCard.dart';
+
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 class Depression extends StatelessWidget {
   // Modify this part
-  String depressionDescription = 'EDIT THIS PART';
+  //String depressionDescription = 'EDIT THIS PART';
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +19,15 @@ class Depression extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            //const Text('Depression'),
             Expanded(
-              child: CommonCard(
-                color: kPictureBackgroundColor,
-                // Enter Image path here
-                image: Image.asset('images/depression.png'),
-              ),
-            ),
-            Expanded(
-              flex: 3,
+              flex: 4,
               child: Container(
-                  child: Text(
-                    'Description \n \n $depressionDescription',
+                  child: HtmlWidget(
+                    dHtml,
+                    webView: false,
                   ),
-                  margin: const EdgeInsets.all(15.0),
+                  margin: const EdgeInsets.all(25.0),
                   padding: const EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
