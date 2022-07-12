@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:wellness_ethiopia/constants.dart';
@@ -156,52 +158,7 @@ class _PostCardState extends State<PostCard> {
               ],
             ),
           ),
-          // IMAGE SECTION OF THE POST
-          // GestureDetector(
-          //   onDoubleTap: () {
-          //     FireStoreMethods().likePost(
-          //       widget.snap['postId'].toString(),
-          //       user.uid,
-          //       widget.snap['likes'],
-          //     );
-          //     setState(() {
-          //       isLikeAnimating = true;
-          //     });
-          //   },
-          //   child: Stack(
-          //     alignment: Alignment.center,
-          //     children: [
-          //       SizedBox(
-          //         height: MediaQuery.of(context).size.height * 0.35,
-          //         width: double.infinity,
-          //         child: Image.network(
-          //           widget.snap['postUrl'].toString(),
-          //           fit: BoxFit.cover,
-          //         ),
-          //       ),
-          //       AnimatedOpacity(
-          //         duration: const Duration(milliseconds: 200),
-          //         opacity: isLikeAnimating ? 1 : 0,
-          //         child: LikeAnimation(
-          //           isAnimating: isLikeAnimating,
-          //           child: const Icon(
-          //             Icons.favorite,
-          //             color: Colors.white,
-          //             size: 100,
-          //           ),
-          //           duration: const Duration(
-          //             milliseconds: 400,
-          //           ),
-          //           onEnd: () {
-          //             setState(() {
-          //               isLikeAnimating = false;
-          //             });
-          //           },
-          //         ),
-          //       ),
-          //     ],
-          //   ),
-          // ),
+
           // LIKE, COMMENT SECTION OF THE POST
 
           //DESCRIPTION AND NUMBER OF COMMENTS
@@ -246,7 +203,7 @@ class _PostCardState extends State<PostCard> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 DefaultTextStyle(
@@ -301,7 +258,7 @@ class _PostCardState extends State<PostCard> {
             alignment: const Alignment(-1.0, 0.0),
             child: InkWell(
               child: Container(
-                margin: EdgeInsets.only(left: 10.0),
+                margin: const EdgeInsets.only(left: 10.0),
                 child: Text(
                   'View all $commentLen comments',
                   style: const TextStyle(
@@ -323,7 +280,7 @@ class _PostCardState extends State<PostCard> {
           Align(
             alignment: const Alignment(-1.0, 0.0),
             child: Container(
-              margin: EdgeInsets.only(left: 10.0),
+              margin: const EdgeInsets.only(left: 10.0),
               child: Text(
                 DateFormat.yMMMd()
                     .format(widget.snap['datePublished'].toDate()),

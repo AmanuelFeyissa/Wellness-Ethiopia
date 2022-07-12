@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:wellness_ethiopia/screens/Explore_feature_screens/GAD.dart';
 import 'package:wellness_ethiopia/screens/Explore_feature_screens/depression.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/widgets/commonCard.dart';
@@ -16,7 +19,13 @@ class Explore extends StatelessWidget {
       backgroundColor:
           width > webScreenSize ? webBackgroundColor : mobileBackgroundColor,
       appBar: AppBar(
-        title: const Text('Explore Page'),
+        backgroundColor: Color.fromARGB(255, 31, 30, 30),
+        centerTitle: true,
+        title: Text(
+          'Explore Page',
+          style:
+              GoogleFonts.fredokaOne(textStyle: const TextStyle(fontSize: 25)),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -27,8 +36,8 @@ class Explore extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 15.0),
             child: const Text(
-              'MENTAL ILLNESSES',
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
+              'Common Mental illinesses ',
+              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
             ),
           ),
           const SizedBox(
@@ -38,22 +47,49 @@ class Explore extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: CommonCard(
+                // child: CommonCard(
+                //   onPressed: () {
+                //     Navigator.push(context,
+                //         MaterialPageRoute(builder: (context) => Depression()));
+                //   },
+                //   color: kPictureBackgroundColor,
+                //   image: Image.asset('images/depression.png'),
+
+                // ),
+                child: TextButton(
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Depression()));
                   },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/depression.png'),
+                  child: const Text(
+                    'Depression',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Expanded(
-                child: CommonCard(
+                // child: CommonCard(
+                //   onPressed: () {
+                //     // Route
+                //   },
+                //   color: kPictureBackgroundColor,
+                //   image: Image.asset('images/mentalPuzzle.png'),
+                // ),
+                child: TextButton(
                   onPressed: () {
-                    // Route
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Gad()));
                   },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                  child: const Text(
+                    'G.A.D',
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Expanded(
@@ -105,7 +141,7 @@ class Explore extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 15.0),
             child: const Text(
-              'MENTAL HEALTH INSTITUTIONS',
+              'WELL KNOWN MENTAL HEALTH INSTITUTIONS',
               style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
           ),
@@ -116,15 +152,6 @@ class Explore extends StatelessWidget {
             child: Row(
               //crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Expanded(
-                  child: CommonCard(
-                    onPressed: () {
-                      // Route
-                    },
-                    color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
-                  ),
-                ),
                 Expanded(
                   child: CommonCard(
                     onPressed: () {
@@ -154,15 +181,6 @@ class Explore extends StatelessWidget {
                   child: CommonCard(
                     onPressed: () {
                       // ROute
-                    },
-                    color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
-                  ),
-                ),
-                Expanded(
-                  child: CommonCard(
-                    onPressed: () {
-                      // Route
                     },
                     color: kPictureBackgroundColor,
                     image: Image.asset('images/mentalPuzzle.png'),

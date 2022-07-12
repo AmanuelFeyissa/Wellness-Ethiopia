@@ -3,11 +3,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:wellness_ethiopia/screens/add_post_screen.dart';
 import 'package:wellness_ethiopia/screens/chat_page.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/global_variable.dart';
 import 'package:wellness_ethiopia/widgets/post_card.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'chat_screen.dart';
 
@@ -32,8 +34,10 @@ class _FeedScreenState extends State<FeedScreen> {
               backgroundColor: mobileBackgroundColor,
               automaticallyImplyLeading: false,
               centerTitle: false,
-              title: const Text(
+              title: Text(
                 'Wellness Ethiopia',
+                style:
+                    GoogleFonts.fredokaOne(textStyle: TextStyle(fontSize: 20)),
               ),
               actions: [
                 IconButton(
@@ -70,21 +74,6 @@ class _FeedScreenState extends State<FeedScreen> {
                 ),
               ),
             );
-            // return ListView(
-            //   children: [
-            //     //appBar(),
-            //     // ignore: deprecated_member_use
-
-            //     SizedBox(
-            //       height: 0,
-            //     ),
-            //     Contain(),
-            //     Contain(),
-            //     Contain(),
-
-            //     Contain(),
-            //   ],
-            // );
           }),
       // ignore: prefer_const_constructors
       floatingActionButton: SizedBox(

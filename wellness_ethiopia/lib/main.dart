@@ -6,8 +6,7 @@ import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/responsive/mobile_screen_layout.dart';
 import 'package:wellness_ethiopia/responsive/responsive_layout.dart';
 import 'package:wellness_ethiopia/responsive/web_screen_layout.dart';
-import 'package:wellness_ethiopia/screens/get_started_page.dart';
-import 'package:wellness_ethiopia/screens/login_screen.dart';
+
 import 'package:wellness_ethiopia/screens/onboarding_screen.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:provider/provider.dart';

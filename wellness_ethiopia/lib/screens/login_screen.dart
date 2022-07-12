@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:wellness_ethiopia/resources/auth_methods.dart';
 import 'package:wellness_ethiopia/responsive/mobile_screen_layout.dart';
 import 'package:wellness_ethiopia/responsive/responsive_layout.dart';

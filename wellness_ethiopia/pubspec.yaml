@@ -57,6 +57,7 @@ dependencies:
   open_file: ^3.2.1
   introduction_screen: ^3.0.1
   flutter_widget_from_html: ^0.8.5
+  just_audio: ^0.9.27
 
 dev_dependencies:
   flutter_test:

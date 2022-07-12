@@ -9,37 +9,12 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chat app'),
-        actions: [
-          DropdownButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: Theme.of(context).primaryIconTheme.color,
-            ),
-            items: [
-              DropdownMenuItem(
-                child: Container(
-                  child: Row(
-                    children: [
-                      Icon(
-                        Icons.exit_to_app,
-                        color: Colors.black87,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text('Logout'),
-                    ],
-                  ),
-                ),
-                value: 'logout',
-              ),
-            ],
-            onChanged: (itemIdentifier) {
-              if (itemIdentifier == 'logout') FirebaseAuth.instance.signOut();
-            },
-          ),
-        ],
+        backgroundColor: Color.fromARGB(255, 31, 30, 30),
+        centerTitle: true,
+        title: const Text(
+          'Chat Room',
+          style: TextStyle(fontSize: 25.0),
+        ),
       ),
       body: Container(
         child: Column(

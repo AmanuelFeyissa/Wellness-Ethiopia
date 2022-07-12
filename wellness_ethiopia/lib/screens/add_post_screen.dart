@@ -1,13 +1,12 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:wellness_ethiopia/providers/user_provider.dart';
 import 'package:wellness_ethiopia/resources/firestore_methods.dart';
 import 'package:wellness_ethiopia/responsive/mobile_screen_layout.dart';
-import 'package:wellness_ethiopia/screens/feed_screen.dart';
-import 'package:wellness_ethiopia/screens/home_screen.dart';
-import 'package:wellness_ethiopia/services/posts.dart';
+
+
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/utilities/utils.dart';
 import 'package:provider/provider.dart';
@@ -23,47 +22,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
   bool isLoading = false;
   final TextEditingController _descriptionController = TextEditingController();
-  final PostService _postService = PostService();
-
-  // _selectImage(BuildContext parentContext) async {
-  //   return showDialog(
-  //     context: parentContext,
-  //     builder: (BuildContext context) {
-  //       return SimpleDialog(
-  //         title: const Text('Create a Post'),
-  //         children: <Widget>[
-  //           SimpleDialogOption(
-  //               padding: const EdgeInsets.all(20),
-  //               child: const Text('Take a photo'),
-  //               onPressed: () async {
-  //                 Navigator.pop(context);
-  //                 Uint8List file = await pickImage(ImageSource.camera);
-  //                 setState(() {
-  //                   _file = file;
-  //                 });
-  //               }),
-  //           SimpleDialogOption(
-  //               padding: const EdgeInsets.all(20),
-  //               child: const Text('Choose from Gallery'),
-  //               onPressed: () async {
-  //                 Navigator.of(context).pop();
-  //                 Uint8List file = await pickImage(ImageSource.gallery);
-  //                 setState(() {
-  //                   _file = file;
-  //                 });
-  //               }),
-  //           SimpleDialogOption(
-  //             padding: const EdgeInsets.all(20),
-  //             child: const Text("Cancel"),
-  //             onPressed: () {
-  //               Navigator.pop(context);
-  //             },
-  //           )
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
 
   void postImage(String uid, String username, String profImage) async {
     setState(() {
@@ -126,15 +84,6 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
 
-    // return _file == null
-    //     ? Center(
-    //         child: IconButton(
-    //           icon: const Icon(
-    //             Icons.upload,
-    //           ),
-    //           onPressed: () => _selectImage(context),
-    //         ),
-    //       )
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mobileBackgroundColor,
