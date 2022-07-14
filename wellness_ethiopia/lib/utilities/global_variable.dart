@@ -11,7 +11,7 @@ const webScreenSize = 900;
 List<Widget> homeScreenItems = [
   const FeedScreen(),
   const SearchScreen(),
-  const Explore(),
+  Explore(),
   // const Text('notifications'),
   ProfileScreen(
     uid: FirebaseAuth.instance.currentUser!.uid,

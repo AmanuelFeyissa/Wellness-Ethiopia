@@ -2,15 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wellness_ethiopia/screens/Explore_feature_screens/GAD.dart';
+import 'package:wellness_ethiopia/screens/Explore_feature_screens/adhd.dart';
 import 'package:wellness_ethiopia/screens/Explore_feature_screens/depression.dart';
+import 'package:wellness_ethiopia/screens/Explore_feature_screens/ptsd.dart';
 import 'package:wellness_ethiopia/utilities/colors.dart';
 import 'package:wellness_ethiopia/widgets/commonCard.dart';
 import 'package:wellness_ethiopia/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../utilities/global_variable.dart';
 
 class Explore extends StatelessWidget {
-  const Explore({Key? key}) : super(key: key);
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +43,7 @@ class Explore extends StatelessWidget {
             height: 5.0,
           ),
           Container(
-            margin: EdgeInsets.only(left: 15.0),
+            margin: const EdgeInsets.only(left: 15.0),
             child: const Text(
               'Common Mental illinesses ',
               style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
@@ -47,58 +56,33 @@ class Explore extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                // child: CommonCard(
-                //   onPressed: () {
-                //     Navigator.push(context,
-                //         MaterialPageRoute(builder: (context) => Depression()));
-                //   },
-                //   color: kPictureBackgroundColor,
-                //   image: Image.asset('images/depression.png'),
-
-                // ),
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Depression()));
-                  },
-                  child: const Text(
-                    'Depression',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                // child: CommonCard(
-                //   onPressed: () {
-                //     // Route
-                //   },
-                //   color: kPictureBackgroundColor,
-                //   image: Image.asset('images/mentalPuzzle.png'),
-                // ),
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Gad()));
+                        MaterialPageRoute(builder: (context) => const Gad()));
                   },
                   child: const Text(
                     'G.A.D',
                     style: TextStyle(
-                      fontSize: 30.0,
+                      fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ),
               Expanded(
-                child: CommonCard(
+                child: TextButton(
                   onPressed: () {
-                    // Route
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Adhd()));
                   },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                  child: const Text(
+                    'A.D.H.D',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -107,30 +91,33 @@ class Explore extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: CommonCard(
+                child: TextButton(
                   onPressed: () {
-                    // ROute
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Depression()));
                   },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                  child: const Text(
+                    'Depression',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
               Expanded(
-                child: CommonCard(
+                child: TextButton(
                   onPressed: () {
-                    // Route
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Ptsd()));
                   },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
-                ),
-              ),
-              Expanded(
-                child: CommonCard(
-                  onPressed: () {
-                    // Route
-                  },
-                  color: kPictureBackgroundColor,
-                  image: Image.asset('images/mentalPuzzle.png'),
+                  child: const Text(
+                    'P.T.S.D',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
             ],
@@ -141,7 +128,7 @@ class Explore extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 15.0),
             child: const Text(
-              'WELL KNOWN MENTAL HEALTH INSTITUTIONS',
+              'WELL KNOWN MENTAL HEALTH INSTITUTIONS in ADDIS ABEBA',
               style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
           ),
@@ -155,19 +142,20 @@ class Explore extends StatelessWidget {
                 Expanded(
                   child: CommonCard(
                     onPressed: () {
-                      // Route
+                      launchURL('http://gergesenon.org/');
                     },
                     color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
+                    image: Image.asset('images/gerg.png'),
                   ),
                 ),
                 Expanded(
                   child: CommonCard(
                     onPressed: () {
                       // Route
+                      launchURL('https://sitotapsy.com/');
                     },
                     color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
+                    image: Image.asset('images/sitota.png'),
                   ),
                 ),
               ],
@@ -181,18 +169,21 @@ class Explore extends StatelessWidget {
                   child: CommonCard(
                     onPressed: () {
                       // ROute
+                      launchURL('https://lebeza.org/');
                     },
                     color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
+                    image: Image.asset('images/lebeza.png'),
                   ),
                 ),
                 Expanded(
                   child: CommonCard(
                     onPressed: () {
                       // Route
+                      launchURL(
+                          'http://www.abbichumemorialpsychiatricspecialtyandrehabclinic.com/index.html#');
                     },
                     color: kPictureBackgroundColor,
-                    image: Image.asset('images/mentalPuzzle.png'),
+                    image: Image.asset('images/abbichu.png'),
                   ),
                 ),
               ],
