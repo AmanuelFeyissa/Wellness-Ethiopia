@@ -56,16 +56,19 @@ class Explore extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Gad()));
-                  },
-                  child: const Text(
-                    'G.A.D',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+                child: Container(
+                  padding: const EdgeInsets.all(35.0),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => const Gad()));
+                    },
+                    child: const Text(
+                      'G.A.D',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -106,16 +109,21 @@ class Explore extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Ptsd()));
-                  },
-                  child: const Text(
-                    'P.T.S.D',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+                child: Container(
+                  padding: const EdgeInsets.all(35.0),
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Ptsd()));
+                    },
+                    child: const Text(
+                      'P.T.S.D',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -128,7 +136,7 @@ class Explore extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(left: 15.0),
             child: const Text(
-              'WELL KNOWN MENTAL HEALTH INSTITUTIONS in ADDIS ABEBA',
+              'MENTAL HEALTH INSTITUTIONS',
               style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
             ),
           ),

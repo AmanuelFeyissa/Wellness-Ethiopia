@@ -13,6 +13,7 @@ class CommonCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        padding: const EdgeInsets.all(15.0),
         margin: const EdgeInsets.all(15.0),
         child: image,
         decoration: BoxDecoration(
